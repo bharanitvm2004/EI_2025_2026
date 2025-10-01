@@ -2,18 +2,37 @@ import src.*;
 
 // Main class
 public class Main {
-    public static void main(String[] args) {
-        MusicPlayerController player1 = MusicPlayerController.getInstance();
-        MusicPlayerController player2 = MusicPlayerController.getInstance();
+    public static void main(String args[]) {
+        
+        // 1. Creating Phone object WITHOUT Builder (direct constructor usage)
+        Phone normalPhone = new Phone("iOS", "A16 Bionic", 48, 4000);
+        System.out.println("Phone created directly without Builder:");
+        System.out.println(normalPhone);  
+        // Output: Phone [os=iOS, processor=A16 Bionic, camera=48,battery=4000]
+        
+        //2. Creating Phone object WITH Builder (step by step)
+        Phone builtPhone = new PhoneBuilder()
+                                
+                                .setOs("Android")// Setting OS
+                                .setProcessor("Snapdragon") // Setting Processor
+                                .setCamera(64)// Setting Camera
+                                .setBattery(5000)// Setting Battery
+                                .getPhone();// Finally build Phone
 
-        player1.play("Song A");    // Play Song A
-        player2.play("Song B");    // Cannot play Song B, Song A is already playing
+        System.out.println("Phone created using Builder:");
+        System.out.println(builtPhone);  
+        // Output: Phone [os=Android, processor=Snapdragon, camera=64, battery=5000]
 
-        player1.pause();           // Pause Song A
-        player2.play("Song B");    // Now Song B can play
+        Phone builtPhone2 = new PhoneBuilder()
+                                .setCamera(64)// Setting Camera
+                                .setOs("Android")// Setting OS
+                                .setProcessor("Snapdragon") // Setting Processor
+                                .setBattery(5000)// Setting Battery
+                                .getPhone();// Finally build Phone
 
-        if (player1 == player2) {
-            System.out.println("Both players are the same instance.");
-        }
+        System.out.println("Phone created using Builder:");
+        System.out.println(builtPhone2);
+        // Output: Phone [os=Android, processor=Snapdragon, camera=64, battery=5000]  
     }
 }
+
