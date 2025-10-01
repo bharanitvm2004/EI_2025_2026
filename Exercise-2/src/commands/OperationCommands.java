@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 /**
  * Command to book a specific room.
  */
-class BookRoomCommand implements Command {
+public class BookRoomCommand implements Command {
     private final SmartOffice office;
     private final int roomId;
     private final String startTime;
@@ -55,7 +55,7 @@ class BookRoomCommand implements Command {
 /**
  * Command to cancel a booking for a specific room.
  */
-class CancelBookingCommand implements Command {
+public class CancelBookingCommand implements Command {
     private final SmartOffice office;
     private final int roomId;
 
@@ -131,7 +131,7 @@ class UpdateOccupancyCommand implements Command {
 /**
  * Command to display the current status of a room.
  */
-class RoomStatusCommand implements Command {
+public class RoomStatusCommand implements Command {
     private final SmartOffice office;
     private final int roomId;
 
